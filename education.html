@@ -67,21 +67,38 @@
             margin: 20px 0;
         }
         .faq {
-            margin-top: 30px;
-        }
-        .faq h3 {
-            cursor: pointer;
-            background: #8D6E63;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .faq p {
-            display: none;
-            background: #f1e5d1;
-            padding: 10px;
-            border-radius: 5px;
-        }
+    margin-top: 30px;
+    text-align: left; /* Align all text to the left */
+    padding-left: 20px; /* Add some padding to the left */
+}
+
+.faq h3 {
+    cursor: pointer;
+    background: #ee433d;
+    color: rgb(255, 243, 243);
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0; /* Add spacing between questions */
+    position: relative;
+    padding-left: 40px; /* Space for the pointer */
+}
+
+.faq h3::before {
+    content: "Q"; /* Add a pointer (e.g., "Q" for Question) */
+    position: absolute;
+    left: 10px; /* Position the pointer to the left */
+    font-weight: bold;
+    color: rgb(255, 254, 254);
+}
+
+.faq p {
+    display: none;
+    background: #eee9e8;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0; /* Add spacing between answers */
+    padding-left: 40px; /* Align with the question */
+}
         .breed-container {
             display: flex;
             flex-wrap: wrap;
@@ -90,16 +107,43 @@
             padding: 20px;
         }
         .breed-box {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            width: 250px;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
+            background: #ddcfce;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    height: 200px; /* Set a fixed height for uniformity */
+    cursor: pointer;
+    transition: transform 0.3s;
+    background-size: cover; /* Ensures the image covers the entire box */
+    background-position: center; /* Centers the image */
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: flex-end; /* Aligns the text at the bottom */
+    justify-content: center;
+}
         .breed-box:hover {
             transform: scale(1.05);
+        }
+        .see-more {
+            margin: 20px 0;
+        }
+        .see-more button {
+            background-color: #8D6E63;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        .see-more button:hover {
+            background-color: #6D4C41;
+        }
+        .hidden {
+            display: none;
         }
     </style>
 </head>
@@ -123,44 +167,99 @@
     <section class="content">
         <h2>Farmer Education</h2>
         <p>Learn best practices for cattle rearing, organic farming, and sustainable dairy production.</p>
-        
-        
-        </div>
     </section>
+
     <section class="breed-container">
-        <div class="breed-box" onclick="alert('Gir: Native to Gujarat, known for high milk yield and disease resistance.')">
+        <!-- First 6 Breeds (Visible by Default) -->
+        <div class="breed-box" style="background-image: url('Brown-Gir-Cow.jpg');" onclick="alert('Gir: Native to Gujarat, known for high milk yield and disease resistance.')">
             <h3>Gir</h3>
         </div>
-        <div class="breed-box" onclick="alert('Sahiwal: Originates from Punjab, excellent for both milk production and drought resistance.')">
+        <div class="breed-box" style="background-image: url('sahiwal.jpg');" onclick="alert('Sahiwal: Originates from Punjab, excellent for both milk production and drought resistance.')">
             <h3>Sahiwal</h3>
         </div>
-        <div class="breed-box" onclick="alert('Red Sindhi: A hardy breed from Sindh, known for its adaptability and moderate milk yield.')">
+        <div class="breed-box" style="background-image: url('red_sindhi.jpeg');" onclick="alert('Red Sindhi: A hardy breed from Sindh, known for its adaptability and moderate milk yield.')">
             <h3>Red Sindhi</h3>
         </div>
-        <div class="breed-box" onclick="alert('Ongole: From Andhra Pradesh, well-known for its strength and resistance to diseases.')">
+        <div class="breed-box" style="background-image: url('ongole.jpeg');" onclick="alert('Ongole: From Andhra Pradesh, well-known for its strength and resistance to diseases.')">
             <h3>Ongole</h3>
         </div>
-        <div class="video-container">
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/example" frameborder="0" allowfullscreen></iframe>
+        <div class="breed-box" style="background-image: url('hoistein.jpeg');" onclick="alert('Holstein: Known for high milk production, originally from the Netherlands.')">
+            <h3>Holstein</h3>
         </div>
-        
-        <div class="faq">
-            <h3 onclick="toggleFAQ(1)">What is the best diet for dairy cows?</h3>
-            <p id="faq1">A balanced diet includes high-quality fodder, mineral supplements, and plenty of fresh water.</p>
-
-            <h3 onclick="toggleFAQ(2)">How to improve milk production naturally?</h3>
-            <p id="faq2">Providing a stress-free environment, proper nutrition, and regular veterinary care can boost milk production.</p>
+        <div class="breed-box" style="background-image: url('jersey.jpeg');" onclick="alert('Jersey: Small size, high butterfat content in milk, originally from Jersey Island.')">
+            <h3>Jersey</h3>
         </div>
 
+        <!-- Additional Breeds (Hidden by Default) -->
+        <div class="breed-box hidden" style="background-image: url('tharparker.jpeg');" onclick="alert('Tharparkar: Known for its ability to thrive in arid conditions, originally from Thar Desert.')">
+            <h3>Tharparkar</h3>
+        </div>
+        <div class="breed-box hidden" style="background-image: url('kankrej.jpeg');" onclick="alert('Kankrej: Known for its draught capacity and milk production, originally from Gujarat.')">
+            <h3>Kankrej</h3>
+        </div>
+        <div class="breed-box hidden" style="background-image: url('deoni.jpeg');" onclick="alert('Deoni: Dual-purpose breed from Maharashtra, known for milk and draught power.')">
+            <h3>Deoni</h3>
+        </div>
+        <div class="breed-box hidden" style="background-image: url('hariana.jpeg');" onclick="alert('Hariana: Known for milk production and draught capacity, originally from Haryana.')">
+            <h3>Hariana</h3>
+        </div>
+    </section>
+
+    <!-- See More Button -->
+    <div class="see-more">
+        <button onclick="toggleSeeMore()">See More</button>
+    </div>
+
+    <!-- YouTube Video Section -->
+    <div class="video-container">
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/example" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <section class="faq">
+        <h3 onclick="toggleFAQ(1)">What is the best diet for dairy cows?</h3>
+        <p id="faq1">A balanced diet includes high-quality fodder, mineral supplements, and plenty of fresh water.</p>
+
+        <h3 onclick="toggleFAQ(2)">How to improve milk production naturally?</h3>
+        <p id="faq2">Providing a stress-free environment, proper nutrition, and regular veterinary care can boost milk production.</p>
+
+        <h3 onclick="toggleFAQ(3)">What are the common diseases in cattle?</h3>
+        <p id="faq3">Common diseases include mastitis, foot and mouth disease, and brucellosis. Regular vaccinations and hygiene practices can prevent these.</p>
+
+        <h3 onclick="toggleFAQ(4)">How often should cows be milked?</h3>
+        <p id="faq4">Cows are typically milked twice a day, but some high-yielding breeds may require milking three times a day.</p>
+
+        <h3 onclick="toggleFAQ(5)">What is the ideal housing for dairy cows?</h3>
+        <p id="faq5">Cows should have a clean, dry, and well-ventilated shelter with enough space to move around comfortably.</p>
+
+        <h3 onclick="toggleFAQ(6)">How to manage cattle during extreme weather?</h3>
+        <p id="faq6">Provide adequate shade and water during hot weather, and ensure warm shelter and dry bedding during cold weather.</p>
     </section>
 
     <script>
+        // Function to toggle FAQ answers
         function toggleFAQ(id) {
             var answer = document.getElementById('faq' + id);
             if (answer.style.display === "none" || answer.style.display === "") {
                 answer.style.display = "block";
             } else {
                 answer.style.display = "none";
+            }
+        }
+
+        // Function to toggle "See More" breeds
+        function toggleSeeMore() {
+            var hiddenBreeds = document.querySelectorAll('.breed-box.hidden');
+            var seeMoreButton = document.querySelector('.see-more button');
+
+            hiddenBreeds.forEach(function(breed) {
+                breed.classList.toggle('hidden');
+            });
+
+            // Change button text
+            if (seeMoreButton.textContent === "See More") {
+                seeMoreButton.textContent = "See Less";
+            } else {
+                seeMoreButton.textContent = "See More";
             }
         }
     </script>
